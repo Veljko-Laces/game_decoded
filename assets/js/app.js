@@ -67,4 +67,3 @@ function toggleMentions() {
       icon.textContent = "▼";
     }
 }
-
