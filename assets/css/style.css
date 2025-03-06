@@ -1,49 +1,63 @@
-*{
-    margin:0; 
-    padding: 0; 
+* {
+    margin: 0;
+    padding: 0;
     box-sizing: border-box;
 }
 
-.separations{
-    
-    position: absolute;
+.faq {
     display: flex;
-    justify-content: space-between;
-    width: 55.2%;
-    
+    flex-direction: column;
+    align-items: flex-start;
+    width: 90%;
+    max-width: 800px; /* Évite que le contenu soit trop large */
 }
 
+.separations {
+    display: flex;
+    flex-direction: column; /* Permet d'empiler les éléments */
+    justify-content: space-between;
+    width: 100%; /* Ajuste à la largeur du parent */
+}
 
 article {
-    padding-top: 1.3rem;
-    margin-bottom: 3rem;
+    width: 100%; /* S'assure que chaque question prend toute la largeur */
+    padding: 1.3rem;
+    margin-bottom: 1rem;
     border-top: 1px solid black;
     cursor: pointer;
-    height: auto; /* Utilisez "auto" pour permettre l'expansion */
-    max-height: 20px; /* Hauteur initiale */
-    overflow: hidden; /* Masquer le contenu qui dépasse */
+    max-height: 50px; /* Hauteur initiale */
+    overflow: hidden;
     transition: max-height 0.6s ease, opacity 0.4s ease;
 }
 
-article .paragraphe1,
-article .paragraphe2,
-article .paragraphe3 {
-    margin-top: 2rem;
+article h2 {
+    font-size: 1.2rem;
+    text-align: left;
+}
+
+article p {
+    margin-top: 1rem;
     opacity: 0;
     visibility: hidden;
     transition: opacity 0.4s ease, visibility 0.4s ease;
 }
 
-article .paragraphe1.visible,
-article .paragraphe2.visible,
-article .paragraphe3.visible {
+article.open {
+    max-height: 200px; /* Quand on clique, il s'ouvre */
+}
+
+article p.visible {
     opacity: 1;
     visibility: visible;
 }
 
-#questions1.open,
-#questions2.open,
-#questions3.open {
-    max-height: 200px; /* Hauteur maximale lorsque ouvert */
+
+@media (max-width: 768px) {
+    .faq {
+        width: 95%;
+    }
+
+    article h2 {
+        font-size: 1rem; /* Réduit la taille du texte */
+    }
 }
-   
