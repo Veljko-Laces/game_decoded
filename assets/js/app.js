@@ -67,3 +67,50 @@ function toggleMentions() {
       icon.textContent = "▼";
     }
 }
+
+
+
+
+
+
+const container1 = document.querySelector('.container1');
+const container2 = document.querySelector('.container2');
+
+
+const observer = new IntersectionObserver((entries)=>{
+
+
+    for(const entry of entries){
+        if(entry.isIntersecting){
+
+           if(entry.target.classList.contains('container1')){
+               entry.target.animate([
+                {transform : 'translateX(100px)', opacity: 0},
+                {transform : 'translateX(0)', opacity: 1},
+               ], {
+                duration : 500
+               })
+           }else if(entry.target.classList.contains('container2')){
+            entry.target.animate([
+                {transform : 'translateX(-100px)', opacity: 0},
+                {transform : 'translateX(0)', opacity: 1},
+               ], {
+                duration : 500
+               })
+        }else{
+            entry.target.animate([
+                {transform : 'translateX(100px) ', opacity: 0},
+                {transform : 'translateX(0)', opacity: 1},
+               ], {
+                duration : 500
+               })
+        }
+        }
+    }
+
+
+}); 
+
+
+if (container1) observer.observe(container1);
+if (container2) observer.observe(container2);
